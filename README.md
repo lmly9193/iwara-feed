@@ -1,18 +1,24 @@
 # Iwara RSS
 
-Custom RSS feed for Iwara.tv
-
-## Installation
+RSS feed for Iwara.tv
 
 ```bash
 npm install
 ```
 
+```bash
+npm run dev
+```
+
+```bash
+npm run deploy
+```
+
 ## Usage
 
 ```
-http://localhost:3000/user/:user
-http://localhost:3000/videos/:userId
-http://localhost:3000/mock/user
-http://localhost:3000/mock/videos
+http://localhost:8787/:username
+http://localhost:8787/:username/feed
+http://localhost:8787/:username/feed?format=rss
+http://localhost:8787/:username/feed?format=json
 ```
