@@ -1,15 +1,9 @@
-import { Router, error, json, withParams } from 'itty-router'
-import profile from './profile';
-import feed from './feed';
+import { AutoRouter } from 'itty-router'
+import { profile, feed } from './controllers';
 
-const router = Router({
-    catch: error,
-    finally: [json],
-});
+const router = AutoRouter();
 
-router.get('/:username', withParams, profile);
+router.get('/:username', profile);
 router.get('/:username/feed', feed);
-
-router.all('*', () => error(404));
 
 export default router;
