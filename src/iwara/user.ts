@@ -6,7 +6,7 @@ export class User implements IUser {
   name: string;
   username: string;
 
-  constructor({ id, username, name }: IwaraUser) {
+  constructor({ id, name, username }: IwaraUser) {
     this.id = id;
     this.name = name;
     this.username = username;

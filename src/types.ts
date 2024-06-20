@@ -1,12 +1,43 @@
 import { Feed } from 'feed';
 
-export interface FeedRequest {
+export type FeedRequest = {
   username: string;
   format?: 'atom' | 'rss' | 'json';
-}
+};
+
+export type IwaraProfile = {
+  user: IwaraUser;
+  [key: string]: unknown;
+};
+
+export type IwaraUser = {
+  id: string;
+  name: string;
+  username: string;
+  [key: string]: unknown;
+};
+
+export type IwaraVideoSearch = {
+  count: number;
+  results: IwaraVideo[];
+  [key: string]: unknown;
+};
+
+export type IwaraVideo = {
+  id: string;
+  title: string;
+  thumbnail: number;
+  file: {
+    id: string;
+    [key: string]: unknown;
+  };
+  user: IwaraUser;
+  createdAt: string;
+  [key: string]: unknown;
+};
 
 export interface IUserFactory {
-  new ({ id, username, name }: IwaraUser): IUser;
+  new ({ id, name, username }: IwaraUser): IUser;
   from(username: string): Promise<IUser>;
 }
 
@@ -15,32 +46,6 @@ export interface IUser {
   name: string;
   username: string;
   video(): Promise<IwaraVideo[]>;
-}
-
-export interface IwaraProfile {
-  user: IwaraUser;
-}
-
-export interface IwaraUser {
-  id: string;
-  name: string;
-  username: string;
-}
-
-export interface IwaraVideoSearch {
-  count: number;
-  results: IwaraVideo[];
-}
-
-export interface IwaraVideo {
-  id: string;
-  title: string;
-  user: IwaraUser;
-  thumbnail: string;
-  file: {
-    id: string;
-  };
-  createdAt: string;
 }
 
 export interface IFeederFactory {
