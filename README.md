@@ -1,6 +1,6 @@
-# Iwara Feeds
+# Iwara Feed
 
-Iwara Feeds is a service that generates RSS feeds for Iwara users. It is designed to run on Cloudflare Workers.
+Iwara Feed is a service that generates RSS feeds for Iwara users. It is designed to run on Cloudflare Workers.
 
 ## Features
 
@@ -17,7 +17,7 @@ http://localhost:8787/:username/:format
 
 ## Installation
 
-1. Clone this repository: `git clone https://github.com/lmly9193/iwara-feeds.git`
+1. Clone this repository: `git clone https://github.com/lmly9193/iwara-feed.git`
 2. Install the dependencies: `npm install`
 3. Start the server: `npm run dev`
 

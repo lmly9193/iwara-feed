@@ -1,4 +1,4 @@
-import { AutoRouter } from 'itty-router'
+import { AutoRouter } from 'itty-router';
 import { feed } from './controllers';
 
 const router = AutoRouter();

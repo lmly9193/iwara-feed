@@ -1,9 +1,9 @@
-export function tap(value, callback) {
+export function tap(value: any, callback: (value: any) => void): any {
     callback(value);
     return value;
 }
 
-export function match(value, expressions) {
+export function match(value: any, expressions: Record<string, any>): any {
     if (typeof expressions !== 'object') {
         throw new Error('Expressions should be an object');
     }
@@ -19,7 +19,7 @@ export function match(value, expressions) {
     throw new Error('No match found and no default provided');
 }
 
-export async function get(target, params = {}) {
+export async function get(target: string, params: Record<string, any> = {}): Promise<any> {
     const url = new URL(target);
 
     for (const [key, value] of Object.entries(params)) {
