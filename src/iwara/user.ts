@@ -35,7 +35,7 @@ export class User implements IUser {
       });
       qty = search.count;
       data = data.concat(search.results);
-    } while (data.length >= qty);
+    } while (data.length < qty);
 
     return data;
   }
