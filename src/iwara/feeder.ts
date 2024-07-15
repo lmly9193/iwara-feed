@@ -1,9 +1,7 @@
 import { Feed } from 'feed';
 import { User } from './user';
-import { IFeeder, IFeederFactory, IwaraVideo } from '../types';
 
-// Todo: 解藕類型
-export class Feeder implements IFeeder {
+export class Feeder {
   feed: Feed;
 
   constructor(user: User) {
@@ -16,19 +14,19 @@ export class Feeder implements IFeeder {
     });
   }
 
-  static async create(this: IFeederFactory ,user: User): Promise<Feeder> {
+  static async create(user: User): Promise<Feeder> {
     const feeder = new this(user);
-    await feeder.import(await user.video());
+    feeder.import(await user.video());
     return feeder;
   }
 
-  async import(videos: IwaraVideo[]): Promise<void> {
-    for (const video of videos) {
+  import(list: API.Video[]): void {
+    for (const video of list) {
       this.add(video);
     }
   }
 
-  add(video: IwaraVideo): void {
+  add(video: API.Video): void {
     let src = `https://fakeimg.pl/440x230/282828/eae0d0/?retina=1&text=Not+Found`;
     if (!!video.file) {
       let thumb = String(video.thumbnail.toString()).padStart(2, '0');

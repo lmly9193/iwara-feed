@@ -1,9 +1,13 @@
 import { User, Feeder } from '../iwara';
 import { response } from '../utils';
-import { FeedRequest } from '../types';
 
-export async function feed({ username, format }: FeedRequest) {
-  const user = await User.from(username);
+type Request = {
+  username: string;
+  format?: 'atom' | 'rss' | 'json';
+};
+
+export async function feed({ username, format }: Request) {
+  const user = await User.find(username);
   const feeder = await Feeder.create(user);
 
   if (format === undefined || response[format] === undefined) {

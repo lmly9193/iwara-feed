@@ -1,33 +1,32 @@
 import { get } from '../utils';
-import { IwaraUser, IwaraProfile, IwaraVideoSearch, IwaraVideo, IUser, IUserFactory } from '../types';
 
-export class User implements IUser {
+export class User {
   id: string;
   name: string;
   username: string;
 
-  constructor({ id, name, username }: IwaraUser) {
+  constructor({ id, name, username }: API.User) {
     this.id = id;
     this.name = name;
     this.username = username;
   }
 
-  static async from(this: IUserFactory, username: string): Promise<User> {
+  static async find(username: string): Promise<User> {
     try {
-      const { user }: IwaraProfile = await get(`https://api.iwara.tv/profile/${username}`);
+      const { user }: API.Profile = await get(`https://api.iwara.tv/profile/${username}`);
       return new this(user);
     } catch (error) {
       throw new Error(`User not found: ${username}`);
     }
   }
 
-  async video(): Promise<IwaraVideo[]> {
-    let data: IwaraVideo[] = [];
+  async video(): Promise<API.Video[]> {
+    let data: API.Video[] = [];
     let qty: number = 0;
     let page: number = 0;
 
     do {
-      const search: IwaraVideoSearch = await get(`https://api.iwara.tv/videos`, {
+      const search: API.Search = await get(`https://api.iwara.tv/videos`, {
         user: this.id,
         page: page++,
         sort: 'date',
