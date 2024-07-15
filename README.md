@@ -18,15 +18,15 @@ http://localhost:8787/:username/:format
 ## Installation
 
 1. Clone this repository: `git clone https://github.com/lmly9193/iwara-feed.git`
-2. Install the dependencies: `npm install`
-3. Start the server: `npm run dev`
+2. Install the dependencies: `pnpm install`
+3. Start the server: `pnpm run dev`
 
 ## Deploy
 
 To deploy this service to Cloudflare Workers, follow these steps:
 
 1. Update the name of your workers in the `wrangler.toml` file.
-2. Deploy the service: `npm run deploy`
+2. Deploy the service: `pnpm run deploy`
 
 ## Contributing
 
